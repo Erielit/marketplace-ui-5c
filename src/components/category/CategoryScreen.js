@@ -4,7 +4,7 @@ import { CategoryList } from "./components/CategoryList";
 
 export const CategoryScreen = () => {
   return (
-    <Row>
+    <Row className="mt-5">
       <Col>
         <CategoryList />
       </Col>
