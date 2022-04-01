@@ -5,10 +5,11 @@ import { AuthContext } from "../components/auth/authContext";
 import { LoginScreen } from "../components/auth/LoginScreen";
 import { CategoryScreen } from "../components/category/CategoryScreen";
 import { SubcategoryScreen } from "../components/subcategory/SubcategoryScreen";
-import img from "../assets/img/marketplace.png";
 import { ProductHome } from "../components/home/ProductHome";
 import { ContactScreen } from "../components/contact/ContactScreen";
 import { PublicNavbar } from "../shared/components/PublicNavbar";
+import { PrivateNavBar } from "../shared/components/PrivateNavBar";
+import { ProductScreen } from "../components/product/ProductScreen";
 
 export const AppRouter = () => {
   const { user } = useContext(AuthContext);
@@ -22,21 +23,7 @@ export const AppRouter = () => {
           element={
             user.logged ? (
               <>
-                <Navbar bg="dark" variant="dark">
-                  <Container fluid>
-                    <Navbar.Brand href="#">
-                      <Image src={img} style={{ width: 20, height: "auto" }} />
-                    </Navbar.Brand>
-                    <Nav className="me-auto">
-                      <Link to={"/"} className="nav-link">
-                        Categorías
-                      </Link>
-                      <Link to={"/subcategory"} className="nav-link">
-                        Subcategorías
-                      </Link>
-                    </Nav>
-                  </Container>
-                </Navbar>
+                <PrivateNavBar />
                 <Container>
                   <Routes>
                     <Route
@@ -44,6 +31,7 @@ export const AppRouter = () => {
                       element={<SubcategoryScreen />}
                     />
                     <Route path={"/home"} element={<CategoryScreen />} />
+                    <Route path="/products" element={<ProductScreen />} />
                     <Route path={"/"} element={<CategoryScreen />} />
                     <Route path="*" element={<div>Error 404</div>} />
                   </Routes>
